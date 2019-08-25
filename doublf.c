@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   doublf.c                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: smanhack <smanhack@student.42.fr>          +#+  +:+       +#+        */
+/*   By: mriley <mriley@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/07/07 20:41:10 by mriley            #+#    #+#             */
-/*   Updated: 2019/08/02 19:03:07 by smanhack         ###   ########.fr       */
+/*   Updated: 2019/08/25 19:10:57 by mriley           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,10 +27,12 @@ char		*izdvatodestocd(double n, t_format f)
 	p = 6;
 	if (f.prec > 0)
 		p = f.prec;
-	if (f.prec == 0)
+	if (f.prec == 0 || f.prec == -1)
 		p = 1;
 	if (n < 0.0)
 		n = -n;
+	if (n > 0.5 && f.prec == 0)
+		return (ft_strdup("1.0"));
 	h = (char*)malloc(p + 2);
 	while (i < p)
 	{
@@ -38,9 +40,7 @@ char		*izdvatodestocd(double n, t_format f)
 		h[i++] = (int)n + '0';
 		n = n - (int)n;
 	}
-	h[i] = '\0';
-	if (h[0] >= '5' && f.prec == 0)
-		return (ft_strdup("1.0"));
+	h[p] = '\0';
 	if ((h[i - 1] - 48) % 2 != 0)
 		h = ft_okruglyaem(h, n * 10);
 	return (h);
@@ -69,7 +69,7 @@ void		ft_free(t_point p)
 
 void		ft_toretryd_bonus(t_point *p, char **stroka, t_format *ff)
 {
-	if (p->toc[1] == '.' && proverka(p->toc, p->zifra) != 1)
+	if (p->toc[1] == '.')
 	{
 		p->zifra = ft_peredelzel(p->zifra, ft_strlen(p->zifra));
 		p->toc = tocotrub(p->toc);
@@ -84,7 +84,22 @@ void		ft_toretryd_bonus(t_point *p, char **stroka, t_format *ff)
 		p->zifra = *stroka;
 	}
 }
-
+char *func_infinity(char *string)
+{
+	if (ft_strcmp(string,"0111111111110000000000000000000000000000000000000000000000000000") == 0)
+		return(ft_strdup("inf"));
+	if (ft_strcmp(string,"1111111111110000000000000000000000000000000000000000000000000000") == 0)
+		return(ft_strdup("-inf"));
+	if (ft_strcmp(string,"0111111111110000000000000000000000000000000000000000000000000001") == 0)
+		return(ft_strdup("nan"));
+	if (ft_strcmp(string,"0111111111111000000000000000000000000000000000000000000000000001") == 0)
+		return(ft_strdup("nan"));
+	if (ft_strcmp(string,"0111111111111111111111111111111111111111111111111111111111111111") == 0)
+		return(ft_strdup("nan"));
+	if (ft_strcmp(string,"0111111111111000000000000000000000000000000000000000000000000000") == 0)
+		return(ft_strdup("nan"));
+	return (NULL);
+}
 char		*toretryd(va_list ap, t_format ff)
 {
 	double		n;
@@ -100,6 +115,8 @@ char		*toretryd(va_list ap, t_format ff)
 		return (toretry(ap, ff));
 	n = va_arg(ap, double);
 	p.s = ft_putbitd(&n, 8);
+	if (func_infinity(p.s))
+		return(func_infinity(p.s));
 	toretryd_part_2(&p, &i, &ff);
 	p.zifra = ft_delaem(p.g, p.znak, p.mantissa);
 	p.toc = todestocd(n, ff);

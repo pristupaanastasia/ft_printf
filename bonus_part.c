@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   bonus_part.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: smanhack <smanhack@student.42.fr>          +#+  +:+       +#+        */
+/*   By: mriley <mriley@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/08/02 18:59:31 by smanhack          #+#    #+#             */
-/*   Updated: 2019/08/02 19:03:38 by smanhack         ###   ########.fr       */
+/*   Updated: 2019/08/25 19:01:04 by mriley           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,7 +14,7 @@
 
 int					proverka(char *posle, char *zeloe)
 {
-	if (posle[0] >= '5')
+	if (posle[0] >= '5' || posle[1] == '.')
 	{
 		if (zeloe[ft_strlen(zeloe) - 1] == '2'
 			|| zeloe[ft_strlen(zeloe) - 1] == '4'

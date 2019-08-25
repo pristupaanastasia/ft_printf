@@ -6,7 +6,7 @@
 /*   By: mriley <mriley@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/07/23 16:21:44 by smanhack          #+#    #+#             */
-/*   Updated: 2019/08/01 19:46:05 by mriley           ###   ########.fr       */
+/*   Updated: 2019/08/25 19:22:13 by mriley           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -90,13 +90,13 @@ char				*ft_delaem_part_2(int *g, int *j, char **zifra)
 	char	*stroka;
 
 	stroka = *zifra;
-	if (g[j[2] + 1] < 100 && j[1] != 0 && (j[2] + 1) != 0)
+	if (g[j[2] + 1] < 100 && j[1] != 0)
 	{
 		stroka = ft_strjoin(*zifra, "0");
 		free(*zifra);
 		*zifra = stroka;
 	}
-	if (g[j[2] + 1] < 10 && j[1] != 0 && (j[2] + 1) != 0)
+	if (g[j[2] + 1] < 10 && j[1] != 0)
 	{
 		stroka = ft_strjoin(*zifra, "0");
 		free(*zifra);
