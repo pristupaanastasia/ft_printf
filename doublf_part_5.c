@@ -6,7 +6,7 @@
 /*   By: mriley <mriley@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/07/23 15:38:39 by smanhack          #+#    #+#             */
-/*   Updated: 2019/08/01 20:16:59 by mriley           ###   ########.fr       */
+/*   Updated: 2019/08/29 16:29:55 by mriley           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,7 +20,6 @@ char				*todestocd(double n, t_format fа)
 
 	j = 0;
 	i = 0;
-	n = n - (long long)n;
 	des = izdvatodestocd(n, fа);
 	return (des);
 }

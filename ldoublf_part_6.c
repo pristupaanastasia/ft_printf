@@ -6,7 +6,7 @@
 /*   By: mriley <mriley@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/07/23 16:22:28 by smanhack          #+#    #+#             */
-/*   Updated: 2019/08/25 19:23:17 by mriley           ###   ########.fr       */
+/*   Updated: 2019/08/29 17:21:26 by mriley           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -75,7 +75,7 @@ char				*ft_okrtoc(char *t, t_format ff)
 	return (t);
 }
 
-char				*delaem1(int *g, t_format ff, char *mantissa)
+char				*delaem1(int *g, t_format ff, char *mantissa, long double n)
 {
 	int		j[3];
 	char	*s;
@@ -85,6 +85,8 @@ char				*delaem1(int *g, t_format ff, char *mantissa)
 	d = (char*)malloc((ft_strlen(mantissa) + 2) + 1);
 	ft_bzero(d, (ft_strlen(mantissa) + 2) + 1);
 	ft_zero(j);
+	if (n < 0)
+		n = -n;
 	while (j[1] < ff.prec + 1)
 	{
 		s = ft_itoa(g[j[1]++]);
@@ -95,8 +97,11 @@ char				*delaem1(int *g, t_format ff, char *mantissa)
 		j[0]++;
 		j[2] = 1;
 	}
-	if (g[j[1] >= '5'] && j[1] == 1)
+	if (((s[0] - 48 > 5 )||( s[0] - 48 == 5 && (long long)n % 2 != 0)) && j[1] == 1)
+	{
+		
 		return (ft_strdup("1.0"));
+	}
 	d = ft_okrtoc(d, ff);
 	return (d);
 }

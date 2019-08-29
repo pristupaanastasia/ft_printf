@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   ft_fourth.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: smanhack <smanhack@student.42.fr>          +#+  +:+       +#+        */
+/*   By: mriley <mriley@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/07/28 16:25:30 by smanhack          #+#    #+#             */
-/*   Updated: 2019/08/02 19:22:17 by smanhack         ###   ########.fr       */
+/*   Updated: 2019/08/29 15:27:20 by mriley           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -98,8 +98,8 @@ int			ft_print(char *buff, t_format f)
 		count--;
 	if (*buff == '\0' && f.sym == 'c')
 		count = 1;
-	if (count == 1 && *buff == '0' && f.prec == -1 && !(f.sym == 'o' &&
-	(f.flags & 1) == 1))
+	if (count == 1 && *buff == '0' && f.prec == -1 && f.sym != 'f'
+		&& !(f.sym == 'o' && (f.flags & 1) == 1))
 	{
 		count = 0;
 		while (f.width-- > 0)

@@ -6,7 +6,7 @@
 /*   By: mriley <mriley@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/07/23 16:21:44 by smanhack          #+#    #+#             */
-/*   Updated: 2019/08/25 19:22:13 by mriley           ###   ########.fr       */
+/*   Updated: 2019/08/29 15:17:59 by mriley           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,7 +18,7 @@ char				*ft_okruglyaem(char *h, long double n)
 	int		i;
 
 	i = ft_strlen(h) - 1;
-	g = (int)(n * 10);
+	g = (int)(n);
 	if (g > 5)
 	{
 		h[i] = h[i] + 1;

@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   ldoublf.c                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: smanhack <smanhack@student.42.fr>          +#+  +:+       +#+        */
+/*   By: mriley <mriley@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/07/23 16:05:49 by smanhack          #+#    #+#             */
-/*   Updated: 2019/08/02 19:02:44 by smanhack         ###   ########.fr       */
+/*   Updated: 2019/08/29 17:20:52 by mriley           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -79,7 +79,7 @@ char				*tocotrub(char *toc)
 
 void				ft_toretry_bbonus(t_point *p, t_format *ff, char **d)
 {
-	if (p->toc[1] == '.' && proverka(p->toc, p->zifra) != 1)
+	if (p->toc[1] == '.')
 	{
 		p->zifra = ft_peredelzel(p->zifra, ft_strlen(p->zifra));
 		p->toc = tocotrub(p->toc);
@@ -112,11 +112,13 @@ char				*toretry(va_list ap, t_format ff)
 	p.g = todes(p.mantissa);
 	p.posle = dlinayadrob(p.mantissa, ff);
 	p.zifra = ft_delaem(p.g, p.znak, p.mantissa);
-	p.toc = delaem1(p.posle, ff, p.mantissa);
+	p.toc = delaem1(p.posle, ff, p.mantissa,n);
 	ft_toretry_bbonus(&p, &ff, &d);
 	free(p.posle);
 	free(p.s);
 	free(p.g);
 	free(p.znak);
+	if ((ff.flags & 1) && ft_strchr(p.zifra,'.') == NULL)
+		return(ft_strjoin(p.zifra,"."));
 	return (p.zifra);
 }

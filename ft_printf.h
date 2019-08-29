@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   ft_printf.h                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: smanhack <smanhack@student.42.fr>          +#+  +:+       +#+        */
+/*   By: mriley <mriley@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/05/18 18:03:23 by smanhack          #+#    #+#             */
-/*   Updated: 2019/08/02 19:52:34 by smanhack         ###   ########.fr       */
+/*   Updated: 2019/08/29 16:39:11 by mriley           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -71,7 +71,7 @@ char				*toretry(va_list ap, t_format f);
 char				*ft_delaem(int *g, char *znak, char *mantissa);
 void				ft_format_part_2(t_format *f, const char *frmt, int *i);
 int					*dlinayadrob(char *mantissa, t_format ff);
-char				*delaem1(int *g, t_format ff, char *mantissa);
+char				*delaem1(int *g, t_format ff, char *mantissa, long double n);
 char				*tocotrub(char *toc);
 char				*ft_peredelzel(char *zifra, int j);
 char				*todestoc(long double n, t_format f);
