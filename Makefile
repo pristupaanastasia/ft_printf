@@ -24,7 +24,7 @@ OBJ = $(SRC:%.c=%.o)
 all : $(NAME)
 
 $(NAME) :
-	gcc $(FLAGS) -I$(HDR) -c $(SRC)
+	gcc $(FLAGS) -I $(HDR) -c $(SRC)
 	ar rc $(NAME) $(OBJ)
 	ranlib $(NAME)
 
